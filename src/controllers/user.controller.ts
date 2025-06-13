@@ -21,7 +21,7 @@ export const CreateUsers = async (req: Request, res: Response) => {
 
         await createUser(params);
 
-        res.status(201).json({ res_message: 'User created successfully' });
+        res.status(201).json({ res_message: 'created successfully' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ res_message: 'Internal server error' });

@@ -10,6 +10,12 @@ export interface Wallets {
     updated_at?: Date;
 }
 
+export const listWallets = async (user_id: number) => {
+    const data = await db('wallets')
+        .where('user_id', user_id)
+    return data;
+};
+
 export const Wallet = async (user_id: number, currency_code: string) => {
     const data = await db('wallets')
         .select('wallet_id')

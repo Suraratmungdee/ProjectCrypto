@@ -39,7 +39,8 @@ export const matchedOrder = async (params: MatchedOrderParams) => {
         .where('order_type', oppositeOrderType)
         .where('currency_code', currency_code)
         .where('fiat_currency_code', fiat_currency_code)
-        .whereNot('user_id', user_id);
+        .whereNot('user_id', user_id)
+        .whereNot('status', 'FILLED');
 
     if (order_type === 'BUY') {
         query.andWhere('price_per_unit_fiat', '<=', price_per_unit_fiat)
@@ -50,17 +51,20 @@ export const matchedOrder = async (params: MatchedOrderParams) => {
     }
 
     const data = await query.first();
-    const remaining = data.amount_crypto - amount_crypto;
+
+    const remaining = data ? data.amount_crypto - amount_crypto : 0;
     const result = {
-        order_id: data.order_id,
-        user_id: data.user_id,
-        order_type: data.order_type,
-        currency_code: data.currency_code,
-        fiat_currency_code: data.fiat_currency_code,
+        order_id: data ? data.order_id : 0,
+        user_id: data ? data.user_id : 0,
+        order_type: data ? data.order_type : '',
+        currency_code: data ? data.currency_code : '',
+        fiat_currency_code: data ? data.fiat_currency_code : 0,
         amount_crypto: remaining,
-        price_per_unit_fiat: data.price_per_unit_fiat,
+        price_per_unit_fiat: data ? data.price_per_unit_fiat : 0 ,
         status: remaining === 0 ? 'FILLED' : remaining < 0 ? 'FILLED' : 'PARTIALLY_FILLED',
     }
+
+
     return result;
 };
 

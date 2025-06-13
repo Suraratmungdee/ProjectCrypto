@@ -30,7 +30,7 @@ export const CreateOrder = async (req: AuthRequest, res: Response) => {
 
         // ค้นหาว่ามี order มั้ย
         const matched_order = await matchedOrder(order);
-        if (matched_order) {
+        if (matched_order.status !== "FILLED") {
             const trade: Trade = {
                 user_id,
                 buy_order_id: matched_order.order_type === 'BUY' ? matched_order.order_id : null,
@@ -75,7 +75,7 @@ export const CreateOrder = async (req: AuthRequest, res: Response) => {
             return;
         }
 
-        res.status(201).json({ res_message: 'Orders created successfully' });
+        res.status(201).json({ res_message: 'created successfully' });
 
     } catch (err) {
         console.error(err);

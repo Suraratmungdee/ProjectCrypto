@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { CreateTrade } from '../controllers/trade.controller';
+import { ListTrade } from '../controllers/trade.controller';
 import { auth } from '../middlewares/auth';
 
 const router = Router();
 
-router.post('/createTrade', auth, CreateTrade);
+
+router.get('/listTrade', auth, ListTrade);
 
 export default router;
