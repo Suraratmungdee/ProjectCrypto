@@ -23,6 +23,8 @@ PORT=3000
 
 
 # การทดสอบระบบด้วย Postman
+# ไฟล์การทดสอบ Project อยู่ในโฟร์เดอร์ postman
+
 1. สร้างผู้ใช้ (Create User)
 Endpoint: POST /api/createUsers
 
