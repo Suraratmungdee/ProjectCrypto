@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "65459106-444d-4551-9c34-3fa2608b3551",
+		"name": "Project Crypto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32648658"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nemo@gmail.com\",\r\n    \"username\": \"nemo\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/createUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"createUsers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"surarat77\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InN1cmFyYXQ3NyIsImVtYWlsIjoic3VyYXJhdDc3IiwiaWF0IjoxNzQ5Nzk3MjY4fQ.59fbV0TKrOY42EkxDshCMIZBqItMOkOKINKZnUvfPJ4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_type\": \"BUY\", // BUY, SELL\r\n    \"currency_code\": \"BTC\", // BTC, ETH, XRP, DOGE, THB, USD\r\n    \"fiat_currency_code\": \"THB\", // BTC, ETH, XRP, DOGE, THB, USD\r\n    \"amount_crypto\": 0.9,\r\n    \"price_per_unit_fiat\": 1500000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/CreateOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"CreateOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "ฝากเงินหรือเหรียญเข้าระบบ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InN1cmFyYXQ3NyIsImVtYWlsIjoic3VyYXJhdDc3IiwiaWF0IjoxNzQ5NjU2NDU3fQ.ukGWAsVPzn_nZzAfuCX84S6WDvA7mlwn72PbnvfkqUs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction_type\": \"DEPOSIT\",\r\n    \"currency_code\": \"BTC\", // BTC, ETH, XRP, DOGE, THB, USD\r\n    \"amount\": 0.6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/createTransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"createTransactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ถอนเงินหรือเหรียญออกจากระบบ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InN1cmFyYXQ3NyIsImVtYWlsIjoic3VyYXJhdDc3IiwiaWF0IjoxNzQ5NjU2NDU3fQ.ukGWAsVPzn_nZzAfuCX84S6WDvA7mlwn72PbnvfkqUs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaction_type\": \"WITHDRAWAL\",\r\n    \"currency_code\": \"THB\", // BTC, ETH, XRP, DOGE, THB, USD\r\n    \"amount\": 0,\r\n    \"external_address\": \"THB_BANK\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/createTransactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"createTransactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ข้อมูล wallets ของ user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InN1cmFyYXQ3NyIsImVtYWlsIjoic3VyYXJhdDc3IiwiaWF0IjoxNzQ5NjU2NDU3fQ.ukGWAsVPzn_nZzAfuCX84S6WDvA7mlwn72PbnvfkqUs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listWallets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listWallets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ประวัติการ trades ของ user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InN1cmFyYXQ3NyIsImVtYWlsIjoic3VyYXJhdDc3IiwiaWF0IjoxNzQ5NjU2NDU3fQ.ukGWAsVPzn_nZzAfuCX84S6WDvA7mlwn72PbnvfkqUs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/listTrade",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"listTrade"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
